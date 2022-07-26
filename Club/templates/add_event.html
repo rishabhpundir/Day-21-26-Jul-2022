@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% get_media_prefix as MEDIA_URL %}
+{% block title %}Klub™ | Add Event{% endblock title %}
+{% block add-event-active %}active{% endblock add-event-active %}
+{% block body %}
+
+<div class="container mb-5">
+
+    <h1 class="text-center my-3"><strong>Add Event</strong></h1>
+
+    {% if submitted %}
+
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Event added successfully.</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    {% else %}
+
+    <form action="" enctype="multipart/form-data" method=POST>
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    {% endif %}
+
+</div>
+
+{% endblock body %}
